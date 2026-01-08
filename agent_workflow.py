@@ -4,9 +4,12 @@ import ollama
 import re
 from typing import TypedDict, List
 from langgraph.graph import StateGraph, END
+from dotenv import load_dotenv
 
 # Load pre-trained model from Phase 3
 ml_model = joblib.load('best_eligibility_model.pkl')
+
+load_dotenv()
 
 class AgentState(TypedDict):
     ui_data: dict

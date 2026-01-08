@@ -35,10 +35,15 @@ Recommendation Agent: Analyzes medical reports and resumes to suggest specific s
 📂 Project Structure
 
 ├── app.py                     # Streamlit UI & State-Aware Chatbot logic
+
 ├── agent_workflow.py          # LangGraph agent nodes and state definitions
+
 ├── processor.py               # PDF/Excel extraction and normalization logic
+
 ├── best_eligibility_model.pkl  # Pre-trained ML model for prediction
+
 ├── requirements.txt           # Project dependencies
+
 └── README.md                  # Project documentation
 
 ⚙️ Installation & Setup

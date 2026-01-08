@@ -1,2 +1,16 @@
-# Sovereign-AI-Verifier
-This project is an Autonomous Social Support Verification System designed to automate the validation of applicant documents for government aid. It uses a Multi-Agent Orchestration framework via LangGraph to ensure data consistency across bank statements, identity documents, and credit reports before assessing eligibility.
+# Sovereign AI: Intelligent Social Support Verifier
+
+An automated, multi-agent system for verifying government aid applications using local LLMs and machine learning.
+
+## 🛠️ Installation & Setup
+
+1. **Clone the Repository**:
+   ```bash
+   git clone [https://github.com/your-username/sovereign-ai-verifier.git](https://github.com/your-username/sovereign-ai-verifier.git)
+   cd sovereign-ai-verifier
+
+   pip install -r requirements.txt
+
+   ollama pull llama3.2:1b
+
+   streamlit run app.py

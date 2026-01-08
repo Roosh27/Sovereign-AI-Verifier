@@ -33,7 +33,6 @@ Decision Agent: Translates ML predictions into human-friendly "Accepted" or "Sof
 Recommendation Agent: Analyzes medical reports and resumes to suggest specific support pathways, such as Financial Support or Economic Enablement.
 
 📂 Project Structure
-Bash
 
 ├── app.py                     # Streamlit UI & State-Aware Chatbot logic
 ├── agent_workflow.py          # LangGraph agent nodes and state definitions
@@ -41,25 +40,24 @@ Bash
 ├── best_eligibility_model.pkl  # Pre-trained ML model for prediction
 ├── requirements.txt           # Project dependencies
 └── README.md                  # Project documentation
+
 ⚙️ Installation & Setup
+
 Clone the Repository:
 
-Bash
+    git clone https://github.com/your-username/sovereign-ai-verifier.git
+    cd sovereign-ai-verifier
 
-git clone https://github.com/your-username/sovereign-ai-verifier.git
-cd sovereign-ai-verifier
 Install Dependencies:
 
-Bash
+    pip install -r requirements.txt
 
-pip install -r requirements.txt
-Setup Ollama: Download Ollama from ollama.com and pull the model:
+Setup Ollama: 
 
-Bash
+    Download Ollama from ollama.com and pull the model:
 
-ollama pull llama3.2:1b
+    ollama pull llama3.2:1b
+
 Launch the App:
 
-Bash
-
-streamlit run app.py
+    python -m streamlit run app.py

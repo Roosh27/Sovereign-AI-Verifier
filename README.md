@@ -2,30 +2,34 @@
 
 Sovereign AI is an end-to-end autonomous verification system designed to automate the validation of government aid applications. By orchestrating multiple specialized agents via LangGraph and utilizing localized LLMs, the system ensures data consistency across disparate document types—such as bank statements, identity cards, and credit reports—before predicting eligibility using a machine learning model.
 
+---
+
 ## 🚀 Key Features
 
 - **Multi-Agent Orchestration**: Utilizes LangGraph to coordinate specialized agents (Validation, Inference, Decision, and Recommendation) for a seamless, hierarchical verification workflow.
-- **Robust Data Extraction**: Features a customized text-processing engine optimized for complex PDF layouts, specifically designed to capture positional "Credit" data from bank statements and structured labels from credit reports.
-- **ML-Driven Eligibility Prediction**: Integrates a pre-trained Random Forest/XGBoost model to assess eligibility based on a verified feature vector including income, savings, medical severity, and dependents.
-- **Two-Step Conversational AI**: Includes a state-aware assistant that initially provides only a high-level status (Accepted/Rejected) and reveals technical reasoning or document mismatches only upon direct user request.
-- **Data Sovereignty**: Built for privacy, the system processes sensitive information locally using Ollama, ensuring no data leaves the sovereign environment.
-- **Detailed Audit Trail**: Document-level verification reporting with specific failure reasons for transparency and compliance.
+- **Robust Data Extraction**: Modular document processors for each document type, optimized for complex PDF layouts and structured data.
+- **ML-Driven Eligibility Prediction**: Integrates a pre-trained Random Forest/XGBoost model to assess eligibility based on a verified feature vector.
+- **Two-Step Conversational AI**: State-aware assistant provides high-level status and reveals technical reasoning only upon direct user request.
+- **Data Sovereignty**: Processes sensitive information locally using Ollama.
+- **Detailed Audit Trail**: Document-level verification reporting with specific failure reasons.
+- **LangSmith Observability**: All agent workflows are traced and observable in LangSmith for debugging and monitoring.
+
+---
 
 ## 🛠️ Tech Stack
 
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| **Frontend** | Streamlit 1.52.2 | Interactive web UI & real-time verification dashboard |
-| **Orchestration** | LangGraph 1.0.5 | Multi-agent workflow compilation & state management |
-| **LLM Integration** | Ollama 0.6.1 (Llama 3.2:1b) | Local reasoning & conversational responses |
-| **Data Processing** | PyPDF 6.5.0, Pandas 2.3.3 | PDF extraction & tabular data manipulation |
-| **Machine Learning** | Scikit-Learn 1.8.0, XGBoost 3.1.2 | Eligibility model prediction |
-| **Model Management** | Joblib 1.5.3 | Model serialization & loading |
-| **Explainability** | SHAP 0.50.0 | Feature importance & decision explanations |
-| **Visualization** | Matplotlib 3.10.8, Seaborn 0.13.2 | Chart generation for eligibility insights |
-| **Data Generation** | Faker 40.1.0 | Synthetic test data creation |
-| **Database** | SQLAlchemy 2.0.45 | ORM for audit logging & persistence |
-| **Document Generation** | ReportLab 4.4.7, Pillow 12.1.0 | PDF report generation |
+| Component | Technology | Version | Purpose |
+|-----------|-----------|---------|---------|
+| **Frontend** | Streamlit | 1.33.0 | Interactive web UI & real-time verification dashboard |
+| **API** | FastAPI, Uvicorn | 0.110.2, 0.29.0 | REST API with automatic documentation |
+| **Orchestration** | LangGraph, LangSmith | 0.0.38, 0.1.31 | Multi-agent workflow & observability |
+| **LLM Integration** | Ollama (Llama 3.2:1b) | 0.1.7 | Local reasoning & conversational responses |
+| **Data Processing** | PyPDF, Pandas, OpenPyXL | 4.2.0, 2.2.2, 3.1.2 | PDF/Excel extraction & tabular data |
+| **Machine Learning** | Scikit-Learn, XGBoost, Joblib | 1.8.0, 3.1.2, 1.4.2 | Eligibility model prediction |
+| **Database** | SQLAlchemy | 2.0.30 | ORM for audit logging & persistence |
+| **Utilities** | python-dotenv, email-validator | 1.0.1, 2.1.1 | Configuration & input validation |
+
+---
 
 ## 🤖 Agent Workflow Logic
 
@@ -44,7 +48,7 @@ Sovereign AI is an end-to-end autonomous verification system designed to automat
   - Medical: has_disability, medical_severity
   - Employment: employment_status
 - Triggers pre-trained ML model (`best_eligibility_model.pkl`)
-- **Output**: Binary eligibility prediction (0 or 1)
+- **Output**: Binary eligibility prediction (0 or 1) with confidence score
 
 ### 3. **Decision Agent**
 - Translates ML predictions into human-friendly responses
@@ -62,7 +66,7 @@ Sovereign AI is an end-to-end autonomous verification system designed to automat
 - Only activates for ACCEPTED applications
 - **Output**: Personalized recommendation with justification
 
-## 📊 State Flow Diagram
+### State Flow Diagram
 
 ```
 START
@@ -80,37 +84,101 @@ START
 END (with recommendation)
 ```
 
+---
+
 ## 📂 Project Structure
 
 ```
 Sovereign-AI-Verifier/
-├── app.py                              # Streamlit UI & State-Aware Chatbot logic
-├── agent_workflow.py                   # LangGraph agent nodes & state definitions
-├── processor.py                        # PDF/Excel extraction & normalization logic
-├── db_manager.py                       # Database operations for audit logging
-├── data_ingestion.py                   # Document upload & preprocessing pipeline
-├── train_model.py                      # ML model training (Phase 3)
-├── verify_infra.py                     # Infrastructure & dependency verification
-├── best_eligibility_model.pkl          # Pre-trained ML model (Random Forest/XGBoost)
-├── requirements.txt                    # Python dependencies
-├── .env                                # Environment variables (API keys, paths)
-├── .gitignore                          # Git ignore rules
-├── README.md                           # This file
 │
-├── applicant_documents/                # Test document samples
-│   ├── asset_fraud/                    # Fraud detection test case
-│   ├── id_mismatch/                    # Identity mismatch test case
-│   ├── ideal_1/ & ideal_2/             # Valid applications
-│   ├── income_mismatch/                # Income inconsistency test case
-│   └── soft_decline_1/ & soft_decline_2/ # Soft decline scenarios
+├── src/                                # Main source code (modular)
+│   ├── __init__.py
+│   ├── api/                            # FastAPI application
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   ├── routes.py
+│   │   └── models.py
+│   │
+│   ├── agents/                         # Multi-agent workflow
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── validation.py
+│   │   ├── inference.py
+│   │   ├── decision.py
+│   │   ├── recommendation.py
+│   │   └── workflow.py
+│   │
+│   ├── processors/                     # Document processors & factory
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── emirates_id.py
+│   │   ├── bank_statement.py
+│   │   ├── credit_report.py
+│   │   ├── medical_report.py
+│   │   ├── resume.py
+│   │   ├── assets.py
+│   │   └── factory.py
+│   │
+│   ├── utils/                          # Utilities
+│   │   ├── __init__.py
+│   │   ├── validators.py
+│   │   ├── text_processing.py
+│   │   └── logger.py
+│   │
+│   ├── config/                         # Centralized configuration
+│   │   ├── __init__.py
+│   │   └── settings.py
+│   │
+│   ├── helpers/                        # Helper functions
+│   │   ├── __init__.py
+│   │   ├── data_formatter.py
+│   │   ├── report_generator.py
+│   │   └── error_handler.py
+│   │
+│   ├── db/                             # Database models & manager
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   └── manager.py
+│   │
+│   └── ui/                             # Streamlit UI
+│       ├── __init__.py
+│       └── app.py
 │
-├── training_data/
-│   ├── balanced_social_support_data.csv      # Training dataset (balanced)
-│   └── synthetic_application_data.csv        # Synthetic test data
+├── scripts/                            # Data generation & ML scripts (optional)
+│   ├── __init__.py
+│   ├── data_generator.py
+│   ├── data_generator_new_field.py
+│   ├── migrate_db.py
+│   └── train_model.py
 │
-└── evaluations/                        # Model evaluation reports & metrics
-
+├── tests/                              # Unit & integration tests
+│   ├── __init__.py
+│   ├── test_processors.py
+│   ├── test_agents.py
+│   ├── test_utils.py
+│   └── conftest.py
+│
+├── logs/                               # Log files (auto-created)
+│
+├── models/                             # ML models
+│   └── best_eligibility_model.pkl
+│
+├── docs/                               # Documentation
+│   ├── API.md
+│   ├── ARCHITECTURE.md
+│   └── SETUP.md
+│
+├── main.py                             # Streamlit entry point
+├── api_server.py                       # FastAPI entry point
+├── cli.py                              # CLI entry point
+├── requirements.txt
+├── .env
+├── .env.example
+├── .gitignore
+└── README.md
 ```
+
+---
 
 ## 🔍 Document Processing Pipeline
 
@@ -131,13 +199,18 @@ Sovereign-AI-Verifier/
 - **Income Harmonization**: Compares salary (Bank Statement) vs. reported income (Credit Report)
 - **Consistency Checks**: Cross-validates family size, employment status, and financial figures
 - **Error Handling**: Returns specific document failures (e.g., "ID missing in Bank Statement")
+- **Factory Pattern**: Extensible processor factory for easy addition of new document types
+
+---
 
 ## ⚙️ Installation & Setup
 
 ### Prerequisites
+
 - Python 3.9+
 - [Ollama](https://ollama.ai) installed and running locally
 - 4GB+ RAM (for Llama 3.2:1b model)
+- Git
 
 ### Step 1: Clone the Repository
 
@@ -150,7 +223,12 @@ cd sovereign-ai-verifier
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# On Windows:
+venv\Scripts\activate
+
+# On Mac/Linux:
+source venv/bin/activate
 ```
 
 ### Step 3: Install Dependencies
@@ -174,113 +252,161 @@ curl http://localhost:11434/api/tags
 
 ### Step 5: Configure Environment Variables
 
-Create a `.env` file in the project root:
+Copy the example file and update with your credentials:
 
 ```bash
-# .env
+cp .env.example .env
+```
+
+Edit `.env` with your settings:
+
+```env
+# Ollama
+OLLAMA_MODEL=llama3.2:1b
+OLLAMA_HOST=http://localhost:11434
+
+# Machine Learning
+ML_MODEL_PATH=models/best_eligibility_model.pkl
+
+# Database
+DATABASE_URL=sqlite:///./sovereign_ai.db
+
+# LangSmith (Observability)
+LANGCHAIN_API_KEY=your-langsmith-api-key
 LANGCHAIN_TRACING_V2=true
-LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
-LANGCHAIN_API_KEY="xxxx"
-LANGCHAIN_PROJECT="xxxx"
-LLM_MODEL="llama3.2:1b" 
-VISION_MODEL="moondream"
-EMBEDDING_MODEL="all-minilm"
+LANGCHAIN_PROJECT=sovereign-ai-verifier
 ```
 
-### Step 6: Verify Infrastructure
+### Step 6: Launch the Application
+
+#### **Option 1: Streamlit Web UI**
 
 ```bash
-python verify_infra.py
+python -m streamlit run main.py
 ```
 
-Expected output:
-```
-✅ Python version OK
-✅ Required packages installed
-✅ Ollama service running
-✅ Model llama3.2:1b available
-✅ Ready to launch
-```
+Visit [http://localhost:8501](http://localhost:8501) in your browser.
 
-### Step 7: Launch the Application
+#### **Option 2: FastAPI REST API**
 
 ```bash
-python -m streamlit run app.py
+python api_server.py
 ```
+
+Visit [http://localhost:8000/docs](http://localhost:8000/docs) for API documentation.
+
+#### **Option 3: CLI Batch Processing**
+
+```bash
+python cli.py --docs path\to\documents --output path\to\reports --name "Your Name" --eid "123456" --age 30 --family-size 4 --dependents 2 --address "Your Address" --marital-status "Married" --employment "Unemployed"
+```
+
+---
 
 ## 📖 Usage Guide
 
-### Basic Workflow
+### Basic Workflow (Streamlit UI)
 
 1. **Upload Documents**: Drag & drop or select PDF/Excel files in the Streamlit interface
 2. **Enter Applicant Info**: Fill in basic details (name, age, marital status, family size, etc.)
-3. **Initiate Verification**: Click "Verify Application" button
+3. **Initiate Verification**: Click "Submit for Verification" button
 4. **Review Results**: 
    - High-level status (Accepted/Rejected/Soft Decline)
    - Document extraction summaries
    - Eligibility reasoning (available on request)
 5. **View Recommendation**: For accepted applications, review personalized support pathway
 
+---
+
 ## 📊 Model Performance Metrics
 
-The pre-trained model (`best_eligibility_model.pkl`) was evaluated on:
+The pre-trained model (`best_eligibility_model.pkl`) was evaluated on a balanced test set:
 
-- **Accuracy**: 97.5% on balanced test set
+- **Accuracy**: 97.5%
 - **Precision**: 0.96 (fewer false positives)
 - **Recall**: 0.97 (catches eligible applicants)
 - **F1-Score**: 0.97
 - **Features Used**: 9 (income, savings, age, family_size, dependents, property_value, disability, severity, employment_status)
 - **Model Type**: XGBoost / Random Forest Ensemble
+- **Training Data**: 1000 balanced synthetic records
 
-**Training Data**: 1000 balanced synthetic
+---
 
 ## 🐛 Troubleshooting
 
 ### Issue: "Ollama service not responding"
+
 ```bash
 # Restart Ollama
 ollama serve
-# or check if port 11434 is blocked
-netstat -an | grep 11434
+
+# Check if port 11434 is accessible
+curl http://localhost:11434/api/tags
 ```
 
 ### Issue: "Model not found"
+
 ```bash
 ollama pull llama3.2:1b
 ollama list  # Verify installation
 ```
 
 ### Issue: "PDF extraction returns empty text"
+
 - Ensure PDF is not image-only (requires OCR)
 - Check document format matches expected layout
-- Enable debug mode in `processor.py` for detailed extraction logs
+- Enable debug mode in logger for detailed extraction logs
 
 ### Issue: "Memory error during inference"
+
 - Reduce Ollama model size (use `llama3.2:1b` instead of larger models)
 - Increase system RAM or reduce batch size
+- Close other applications consuming memory
+
+### Issue: "FastAPI port 8000 already in use"
+
+```bash
+# Find and kill process using port 8000
+# On Windows:
+netstat -ano | findstr :8000
+taskkill /PID <PID> /F
+
+# On Mac/Linux:
+lsof -i :8000
+kill -9 <PID>
+```
+
+---
+
 
 ## 📈 Future Enhancements
 
 - [ ] OCR support for scanned documents
 - [ ] Multi-language document support (Arabic, Urdu, etc.)
 - [ ] Real-time document quality scoring
-- [ ] API endpoint for third-party integration
 - [ ] Advanced fraud detection (CV, image manipulation)
 - [ ] Interactive decision explanations (SHAP visualizations)
 - [ ] Role-based access control for reviewers
 - [ ] Integration with government databases (optional, privacy-first)
 - [ ] Model retraining pipeline with new data
 - [ ] Mobile app for applicants
+- [ ] Docker containerization
+- [ ] Kubernetes deployment
+- [ ] Multi-tenant support
+
+---
 
 ## 📚 References
 
 - [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
 - [Ollama Models](https://ollama.ai)
 - [Streamlit Documentation](https://docs.streamlit.io)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [SQLAlchemy ORM](https://docs.sqlalchemy.org/)
 - [XGBoost Guide](https://xgboost.readthedocs.io)
-- [SHAP Documentation](https://shap.readthedocs.io)
+- [LangSmith Documentation](https://docs.smith.langchain.com/)
 
 ---
 
-**Last Updated**: [Date]  
-**Version**: 1.0.0
+**Last Updated**: January 9, 2026  
+**Version**: 1.0.0  

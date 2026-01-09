@@ -1,0 +1,47 @@
+
+================================================================================
+SOVEREIGN AI VERIFIER - APPLICATION REPORT
+================================================================================
+
+APPLICATION DETAILS
+--------------------------------------------------------------------------------
+Application ID: CLI-20260109164306
+Applicant Name: Lauren Trujillo
+Emirates ID: 634544
+Age: 35
+Family Size: 5
+Report Generated: 2026-01-09 16:43:22
+
+EXTRACTED DATA
+--------------------------------------------------------------------------------
+
+Emirates ID:
+ID: 463621, Name: Cindy Martinez, Marital: Married, Family: 5
+
+Bank Statement:
+Salary: 4,000.00, Balance: 17,840.00
+
+Credit Report:
+Score: 681, Income: 4,000.00, Savings: 16,698.00, Debt: 3,284.00
+
+Medical Report:
+Diagnosis: Generally Fit, Severity: 0/10
+
+Resume:
+Experience: 10 years exp....
+
+Assets/Liabilities:
+Total Value: 35,000.00
+
+FINAL DECISION
+--------------------------------------------------------------------------------
+Status: ACCEPTED
+Decision: Congratulations Lauren Trujillo, your application is accepted.
+Reason: The ACCEPTED decision is based on the Social Security Administration's (SSA) review of an individual's application, which considers their age, disability information, medical history, education, work experience, and other factors to determine their eligibility for a Disability Determination Service (DDS) or Blindness/Digitacy Death Benefit. The SSA uses data results from the SSA's Medical Evidence Report System (MERS), which includes medical records and test results, to assess an applicant's functional capacity and ability to perform basic work-related tasks.
+Recommendation: I would recommend "Economic Enablement" because the applicant has a high level of experience (10 years) and four dependents, indicating they have likely accumulated debt and may struggle with short-term financial needs. Economic enablement is more suitable for this profile as it addresses job training/coaching to achieve long-term stability, which can help alleviate immediate financial stress.
+Eligible: Yes
+Confidence: 99.98%
+
+================================================================================
+END OF REPORT
+================================================================================

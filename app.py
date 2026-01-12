@@ -248,13 +248,13 @@ with col_chat:
             APPLICANT: {applicant_name}
             STATUS: {res.get('status', 'Unknown')}
             GREETING: {res.get('final_decision', '')}
-            TECHNICAL_REASON: {res.get('decision_reason', '')}
+            REASON: {res.get('decision_reason', '')}
             RECOMMENDATION: {res.get('recommendation', 'N/A')}
 
             STRICT CONVERSATION PROTOCOL:
             1. If the applicant was REJECTED, you have already said the Greeting.
-            2. ONLY if the user asks "Why?", "Reason?", or "What is the issue?", provide the 'TECHNICAL_REASON'.
-            3. Use document names and values EXACTLY as they appear in the TECHNICAL_REASON.
+            2. ONLY if the user asks "Why?", "Reason?", or "What is the issue?", provide the 'REASON'.
+            3. Use document names and values EXACTLY as they appear in the REASON.
             4. If the user asks about support or what they get, provide the 'RECOMMENDATION'.
             5. NEVER show code, Python, or raw data structures.
             6. Keep responses under 3 lines.

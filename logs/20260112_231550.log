@@ -1,0 +1,19 @@
+2026-01-12 23:16:33 - Decision_agents.decision - INFO - Decision Agent Started
+2026-01-12 23:16:33 - Decision_agents.decision - INFO -   Applicant: Brandon Donaldson
+2026-01-12 23:16:33 - Decision_agents.decision - INFO -   ML Prediction: NOT ELIGIBLE
+2026-01-12 23:16:33 - Decision_agents.decision - INFO -   Confidence: 82.48%
+2026-01-12 23:16:33 - Decision_agents.decision - INFO -  Sending to LLM for decision reasoning...
+2026-01-12 23:16:48 - Decision_agents.decision - INFO -  LLM reasoning generated successfully
+2026-01-12 23:16:48 - Decision_agents.decision - INFO -    Reason: Here's a brief decline notification:
+
+Dear Brandon Donaldson,
+
+Thank you for taking the time to share your application with us. We appreciate the interest in our organization and the hard work that went into preparing your profile. After reviewing your application, we regret to inform you that we cannot approve it at this time due to financial constraints. Your employment status and savings level indicate that you have a stable financial situation, which aligns with our requirements.
+
+If circumstances change or new information arises that may affect our decision-making process, please do not hesitate to reapply. We appreciate your understanding in this matter and wish you all the best in your job search.
+
+Sincerely,
+[Your Name]
+2026-01-12 23:16:48 - Decision_agents.decision - INFO -  Agent action logged to database
+2026-01-12 23:16:48 - Decision_agents.decision - INFO -  Decision Agent Complete: SOFT DECLINE (Confidence: 82.48%)
+

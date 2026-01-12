@@ -1,0 +1,81 @@
+2026-01-12 22:50:02 - Inference_agents.inference - INFO -  ML model loaded successfully
+2026-01-12 22:53:40 - Validation_agents.validation - INFO -  Validation Agent Started
+2026-01-12 22:53:40 - Validation_agents.validation - INFO -    Applicant: Elizabeth Johnson
+2026-01-12 22:53:40 - Validation_agents.validation - INFO -  Validating document consistency...
+2026-01-12 22:53:40 - Validation_agents.validation - INFO -  Validation PASSED - All checks successful
+2026-01-12 22:53:40 - Validation_agents.validation - INFO -  Agent action logged to database
+2026-01-12 22:53:40 - Validation_agents.validation - INFO -  Validation Agent Complete: VALIDATED
+
+2026-01-12 22:53:40 - Inference_agents.inference - INFO - Inference Agent Started...
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -  Extracting features from documents...
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -  Features extracted successfully
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -   Features dict:    age marital_status  family_size  ...  has_disability  medical_severity  employment_status
+0   35        Married            5  ...               0                 0         Unemployed
+
+[1 rows x 10 columns]
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -  Running ML model prediction...
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -  ML prediction made: ELIGIBLE
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -    Confidence: 99.86%
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -  Agent action logged to database
+2026-01-12 22:53:40 - Inference_agents.inference - INFO -  Inference Agent Complete: ELIGIBLE (confidence: 99.86%)
+
+2026-01-12 22:55:40 - Validation_agents.validation - INFO -  Validation Agent Started
+2026-01-12 22:55:40 - Validation_agents.validation - INFO -    Applicant: Cindy Martinez
+2026-01-12 22:55:40 - Validation_agents.validation - INFO -  Validating document consistency...
+2026-01-12 22:55:40 - Validation_agents.validation - INFO -  Validation PASSED - All checks successful
+2026-01-12 22:55:40 - Validation_agents.validation - INFO -  Agent action logged to database
+2026-01-12 22:55:40 - Validation_agents.validation - INFO -  Validation Agent Complete: VALIDATED
+
+2026-01-12 22:55:40 - Inference_agents.inference - INFO - Inference Agent Started...
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -  Extracting features from documents...
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -  Features extracted successfully
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -   Features dict:    age marital_status  family_size  ...  has_disability  medical_severity  employment_status
+0   35        Married            5  ...               0                 0         Unemployed
+
+[1 rows x 10 columns]
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -  Running ML model prediction...
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -  ML prediction made: ELIGIBLE
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -    Confidence: 99.86%
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -  Agent action logged to database
+2026-01-12 22:55:40 - Inference_agents.inference - INFO -  Inference Agent Complete: ELIGIBLE (confidence: 99.86%)
+
+2026-01-12 22:58:17 - Validation_agents.validation - INFO -  Validation Agent Started
+2026-01-12 22:58:17 - Validation_agents.validation - INFO -    Applicant: Jeffrey Bailey
+2026-01-12 22:58:17 - Validation_agents.validation - INFO -  Validating document consistency...
+2026-01-12 22:58:17 - Validation_agents.validation - INFO -  Validation PASSED - All checks successful
+2026-01-12 22:58:17 - Validation_agents.validation - INFO -  Agent action logged to database
+2026-01-12 22:58:17 - Validation_agents.validation - INFO -  Validation Agent Complete: VALIDATED
+
+2026-01-12 22:58:18 - Inference_agents.inference - INFO - Inference Agent Started...
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -  Extracting features from documents...
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -  Features extracted successfully
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -   Features dict:    age marital_status  family_size  ...  has_disability  medical_severity  employment_status
+0   35        Married            1  ...               0                 0           Employed
+
+[1 rows x 10 columns]
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -  Running ML model prediction...
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -  ML prediction made: ELIGIBLE
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -    Confidence: 99.09%
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -  Agent action logged to database
+2026-01-12 22:58:18 - Inference_agents.inference - INFO -  Inference Agent Complete: ELIGIBLE (confidence: 99.09%)
+
+2026-01-12 22:59:39 - Validation_agents.validation - INFO -  Validation Agent Started
+2026-01-12 22:59:39 - Validation_agents.validation - INFO -    Applicant: Brandon Donaldson
+2026-01-12 22:59:39 - Validation_agents.validation - INFO -  Validating document consistency...
+2026-01-12 22:59:39 - Validation_agents.validation - INFO -  Validation PASSED - All checks successful
+2026-01-12 22:59:39 - Validation_agents.validation - INFO -  Agent action logged to database
+2026-01-12 22:59:39 - Validation_agents.validation - INFO -  Validation Agent Complete: VALIDATED
+
+2026-01-12 22:59:39 - Inference_agents.inference - INFO - Inference Agent Started...
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -  Extracting features from documents...
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -  Features extracted successfully
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -   Features dict:    age marital_status  family_size  ...  has_disability  medical_severity  employment_status
+0   35        Married            5  ...               0                 0           Employed
+
+[1 rows x 10 columns]
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -  Running ML model prediction...
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -  ML prediction made: NOT ELIGIBLE
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -    Confidence: 98.71%
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -  Agent action logged to database
+2026-01-12 22:59:39 - Inference_agents.inference - INFO -  Inference Agent Complete: NOT ELIGIBLE (confidence: 98.71%)
+

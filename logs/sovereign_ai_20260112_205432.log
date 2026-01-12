@@ -1,0 +1,9 @@
+2026-01-12 20:54:56 - agents.inference - INFO -  ML model loaded successfully
+2026-01-12 20:56:03 - agents.inference - INFO - Inference Agent Started...
+2026-01-12 20:56:03 - agents.inference - INFO -  Extracting features from documents...
+2026-01-12 20:56:03 - agents.inference - INFO -  Features extracted successfully
+2026-01-12 20:56:03 - agents.inference - INFO -  Running ML model prediction...
+2026-01-12 20:56:03 - agents.inference - ERROR -  ML prediction error: 'NoneType' object is not iterable
+2026-01-12 20:56:03 - agents.inference - INFO -  Agent action logged to database
+2026-01-12 20:56:03 - agents.inference - INFO -  Inference Agent Complete: NOT ELIGIBLE (confidence: 0.00%)
+

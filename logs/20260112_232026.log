@@ -1,0 +1,19 @@
+2026-01-12 23:21:04 - Decision_agents.decision - INFO - Decision Agent Started
+2026-01-12 23:21:04 - Decision_agents.decision - INFO -   Applicant: Brandon Donaldson
+2026-01-12 23:21:04 - Decision_agents.decision - INFO -   ML Prediction: NOT ELIGIBLE
+2026-01-12 23:21:04 - Decision_agents.decision - INFO -   Confidence: 98.71%
+2026-01-12 23:21:04 - Decision_agents.decision - INFO -  Sending to LLM for decision reasoning...
+2026-01-12 23:21:12 - Decision_agents.decision - INFO -  LLM reasoning generated successfully
+2026-01-12 23:21:12 - Decision_agents.decision - INFO -    Reason: Here's a brief decline message:
+
+Dear Brandon,
+
+Thank you for considering employment with our organization. Based on your application, we regret to inform you that we will be declining your candidacy at this time. Unfortunately, your financial profile falls short of our minimum requirements in terms of income and savings.
+
+We appreciate the time you took to apply and wish you the best in your job search.
+
+Sincerely,
+[Your Name]
+2026-01-12 23:21:12 - Decision_agents.decision - INFO -  Agent action logged to database
+2026-01-12 23:21:12 - Decision_agents.decision - INFO -  Decision Agent Complete: SOFT DECLINE (Confidence: 98.71%)
+

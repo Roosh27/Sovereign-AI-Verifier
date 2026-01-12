@@ -1,4 +1,4 @@
-from typing import TypedDict, List, Any
+from typing import TypedDict, List, Any, NotRequired
 
 class AgentState(TypedDict):
     """
@@ -15,6 +15,10 @@ class AgentState(TypedDict):
     validation_errors: List[str]
     is_eligible: bool
     
+    # Inference Agent Output
+    features: NotRequired[dict]  # Extracted features for ML model
+    ml_prediction_confidence: NotRequired[float]  # Model confidence score
+    
     # Agent Decision Output
     status: str  # VALIDATED, REJECTED, ACCEPTED, SOFT DECLINE
     decision_reason: str  # AI-generated reason
@@ -23,4 +27,3 @@ class AgentState(TypedDict):
     
     # Logging & Metadata
     logs: List[str]
-    ml_prediction_confidence: float

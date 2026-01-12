@@ -17,7 +17,7 @@ def setup_logger(name: str, level=logging.INFO) -> logging.Logger:
     console_handler.setLevel(level)
     
     # File handler
-    log_filename = logs_dir / f"sovereign_ai_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+    log_filename = logs_dir / f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
     file_handler = logging.FileHandler(log_filename)
     file_handler.setLevel(level)
     
